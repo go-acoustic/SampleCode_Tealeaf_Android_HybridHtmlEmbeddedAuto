@@ -1,0 +1,2 @@
+# SampleCode_Tealeaf_HybridHtmlEmbeddedAuto
+HybridHtmlEmbeddedAuto with Tealeaf sdk.
