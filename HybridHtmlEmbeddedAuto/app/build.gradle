@@ -14,12 +14,12 @@ buildscript {
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion '25.0.2'
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId 'tl.hybridhtmlembeddedauto'
         minSdkVersion 16
-        targetSdkVersion 26
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
     }
@@ -34,12 +34,13 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    testCompile 'junit:junit:4.12'
-    compile 'org.aspectj:aspectjrt:1.8.10'
-    compile 'com.android.support:appcompat-v7:26.1.0'
-    compile 'com.android.support:design:26.1.0'
-    compile 'com.google.android.gms:play-services-ads:10.2.1'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'org.aspectj:aspectjrt:1.8.10'
+    implementation 'com.android.support:customtabs:28.0.0'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.google.android.gms:play-services-ads:16.0.0'
 }
 
 final def log = project.logger
@@ -64,7 +65,7 @@ variants.all { variant ->
                 case IMessage.ERROR:
                 case IMessage.FAIL:
                     log.error message.message, message.thrown
-                    break;
+                    break
             }
         }
     }

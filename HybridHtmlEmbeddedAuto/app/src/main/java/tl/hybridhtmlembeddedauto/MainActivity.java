@@ -86,28 +86,4 @@ public class MainActivity extends AppCompatActivity {
     public boolean dispatchTouchEvent(MotionEvent e) {
         return super.dispatchTouchEvent(e);
     }
-
-    /**
-     * {@inheritDoc}
-     */
-    protected void onPause() {
-        super.onPause();
-        // TeaCuts (AspectJ) needs to have override methods to add hooks to it.
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    protected void onResume() {
-        super.onResume();
-        // TeaCuts (AspectJ) needs to have override methods to add hooks to it.
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    protected void onDestroy() {
-        super.onDestroy();
-        // TeaCuts (AspectJ) needs to have override methods to add hooks to it.
-    }
 }
