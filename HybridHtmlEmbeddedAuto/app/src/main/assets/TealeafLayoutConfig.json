@@ -6,11 +6,10 @@
 ******************************************************************************/
 {
   "AutoLayout": {
-    "MainActivity": {
-      "do": true,
-      "screenViewName": "HybridMainActivity",
-      "delay": 2000,
-      "takeScreenShot": false
+      "MainActivity": {
+      "ScreenChange": true,
+      "DisplayName": "HybridMainActivity",
+      "CaptureLayoutDelay": 2000
     }
   },
   "AppendMapIds": {
