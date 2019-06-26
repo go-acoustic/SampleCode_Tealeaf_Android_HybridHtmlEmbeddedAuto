@@ -6,6 +6,7 @@
 ******************************************************************************/
 {
   "AutoLayout": {
+    "MainActivity": {
       "do": true,
       "screenViewName": "HybridMainActivity",
       "delay": 2000,
