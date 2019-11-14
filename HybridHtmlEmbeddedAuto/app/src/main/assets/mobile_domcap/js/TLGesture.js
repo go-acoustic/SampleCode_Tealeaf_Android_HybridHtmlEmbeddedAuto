@@ -1,12 +1,17 @@
 /**
- * Licensed Materials - Property of IBM
- * © Copyright IBM Corp. 2017
- * US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+ * Copyright (c) 2019 Acoustic, L.P. All rights reserved.
+ *
+ * NOTICE: This file contains material that is confidential and proprietary to
+ * Acoustic, L.P. and/or other developers. No license is granted under any intellectual or
+ * industrial property rights of Acoustic, L.P. except as may be provided in an agreement with
+ * Acoustic, L.P. Any unauthorized copying or distribution of content from this file is
+ * prohibited.
+ *
  */
 
 /**
  * @fileOverview The Gesture module implements the logic for capturing Hammer.js gesture events.
- * @version 5.4.0.1805
+ * @version 5.6.0.1875
  * @exports gesture
  */
 
@@ -49,6 +54,7 @@ TLT.addModule("gestures", function (context) {
         tapCount = 0,
         swipeOk = true,
         timer,
+        curriedTap = function () {},
         gestureOptions = {
             swipeAfterPinchInterval: 300,
             doubleTapInterval: 300,
@@ -115,26 +121,6 @@ TLT.addModule("gestures", function (context) {
             target = target.offsetParent;
         }
         return { topLeftX: topLeftX, topLeftY: topLeftY };
-    }
-
-    /**
-     * Gets the relative X & Y values to a webEvent.
-     * @private
-     * @param {WebEvent} webEvent Normalized browser event
-     * @return String value of relative X & Y
-     */
-    function getRelativeXY(webEvent, touchX, touchY) {
-        var elementX = getElementTopLeft(webEvent).topLeftX,
-            elementY = getElementTopLeft(webEvent).topLeftY,
-            width = webEvent.gesture.srcEvent.target.offsetWidth,
-            height = webEvent.gesture.srcEvent.target.offsetHeight,
-            relX = Math.abs((touchX - elementX) / width).toFixed(1),
-            relY = Math.abs((touchY - elementY) / height).toFixed(1);
-
-        relX = relX > 1 || relX < 0 ? 0.5 : relX;
-        relY = relY > 1 || relY < 0 ? 0.5 : relY;
-
-        return relX + "," + relY;
     }
 
     /**
@@ -230,6 +216,7 @@ Queue Event JSON Schema
             addFirstTouch,
             screenWidth,
             screenHeight,
+            relPosInfo,
             i;
 
         //Screen width and height are not updated in landscape mode for iOS devices.
@@ -255,6 +242,12 @@ Queue Event JSON Schema
         //Cycle through all finger touches.
         for (i = 0; i < hammerTouches.length; i += 1) {
             //Add the final position of each finger. All gestures apply.
+            relPosInfo = {
+                x : utils.getValue(options, hammerTouchesLocation + i + ".pageX") - getElementTopLeft(options.webEvent).topLeftX,
+                y : utils.getValue(options, hammerTouchesLocation + i + ".pageY") - getElementTopLeft(options.webEvent).topLeftY,
+                width : utils.getValue(options, "webEvent.gesture.srcEvent.target.offsetWidth"),
+                height : utils.getValue(options, "webEvent.gesture.srcEvent.target.offsetHeight")
+            };
             tlTouches.push(
                 [
                     {
@@ -266,7 +259,7 @@ Queue Event JSON Schema
                             position: {
                                 width: utils.getValue(options, hammerTouchesLocation + i + ".target.offsetWidth"),
                                 height: utils.getValue(options, hammerTouchesLocation + i + ".target.offsetHeight"),
-                                relXY: getRelativeXY(options.webEvent, utils.getValue(options, hammerTouchesLocation + i + ".pageX"), utils.getValue(options, hammerTouchesLocation + i + ".pageY")),
+                                relXY: utils.calculateRelativeXY(relPosInfo),
                                 scrollX: document.documentElement.scrollLeft || document.body.scrollLeft,
                                 scrollY: document.documentElement.scrollTop || document.body.scrollTop
                             },
@@ -306,7 +299,7 @@ Queue Event JSON Schema
             type: 11,
             event: {
                 tlEvent: tlEventType,
-                type: tagName
+                type: tlEventType
             },
             touches: tlTouches
         };
@@ -407,6 +400,23 @@ Queue Event JSON Schema
     }
 
     /**
+     * Higher order function that stores elementId and webEvent of
+     * the latest tap event and returns a function with these values preset,
+     * callable from inside a setTimeout or outside
+     * @private
+     * @param {string} id ID of the target the event is fired on.
+     * @param {obj} webEvent the event object.
+     */
+    function createCurriedTap(id, webEvent) {
+        var curriedId = id,
+            curriedWebEvent = webEvent;
+        return function () {
+            handleGesture(curriedId, curriedWebEvent);
+            tapCount = 0;
+        };
+    }
+
+    /**
      * Specially handles the tap gesture event
      * @private
      * @param {string} id ID of the target the event is fired on.
@@ -419,19 +429,28 @@ Queue Event JSON Schema
         tapCount += 1;
 
         if (tapCount === 1) {
+            curriedTap = createCurriedTap(id, webEvent);
             timer = setTimeout(function () {
-                handleGesture(id, webEvent);
-                //Reset the tap count after the specified delay
-                tapCount = 0;
+                curriedTap();
+                curriedTap = function () {};
             }, doubleTapInterval);
         } else {
             clearTimeout(timer);
             //Change the tap into a doubletap
             webEvent.type = "doubletap";
             handleGesture(id, webEvent);
+            curriedTap = function () {};
             //Reset the tap count after a doubletap
             tapCount = 0;
         }
+    }
+
+    /**
+     * Flushes out any queued taps on unload event
+     **/
+    function handleQueuedTapOnUnload() {
+        clearTimeout(timer);
+        curriedTap();
     }
 
     /**
@@ -671,12 +690,12 @@ Queue Event JSON Schema
                 position;
 
             // Sanity checks
-            if (typeof webEvent !== "object" || !webEvent.type || !webEvent.gesture || !webEvent.target) {
+            if (typeof webEvent !== "object" || !webEvent.type || (!webEvent.gesture && webEvent.type !== "unload") || !webEvent.target) {
                 return;
             }
             //Find the position of the element in elementArray to find the corresponding gesture option object
             position = utils.indexOf(elementArray, webEvent.target.element);
-            if (webEvent.gesture.pointerType === "mouse" && gestureOptions.preventMouse) {
+            if (webEvent.type !== "unload" && webEvent.gesture.pointerType === "mouse" && gestureOptions.preventMouse) {
                 return;
             }
 
@@ -703,6 +722,9 @@ Queue Event JSON Schema
                 break;
             case "release":
                 handleGesture(id, webEvent);
+                break;
+            case "unload":
+                handleQueuedTapOnUnload();
                 break;
             }
         }
