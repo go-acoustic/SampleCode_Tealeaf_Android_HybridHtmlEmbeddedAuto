@@ -12,11 +12,13 @@ import android.app.ActionBar;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.ZoomButtonsController;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.ibm.eo.util.LogInternal;
 import java.lang.reflect.Method;
 
@@ -39,6 +41,14 @@ public class MainActivity extends AppCompatActivity {
                 actionBar.hide();
             }
         }
+
+        findViewById(R.id.button1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                startActivity(getIntent());
+            }
+        });
     }
 
     @SuppressLint("SetJavaScriptEnabled")
