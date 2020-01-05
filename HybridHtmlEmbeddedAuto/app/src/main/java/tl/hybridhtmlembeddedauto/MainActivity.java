@@ -24,8 +24,6 @@ import java.lang.reflect.Method;
 
 
 public class MainActivity extends AppCompatActivity {
-    private String logicalPageName = "HybridAppActivity";
-
     @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
