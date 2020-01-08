@@ -6,10 +6,21 @@
 ******************************************************************************/
 {
   "AutoLayout": {
+    "IBMGlobalScreenSettings":{
+      "ScreenChange": true,
+      "DisplayName": "",
+      "CaptureLayoutDelay": 500,
+      "ScreenShot": false,
+      "NumberOfWebViews": 0,
+      "CaptureUserEvents": true,
+      "CaptureScreenVisits": true,
+      "CaptureLayoutOn": 2,
+      "CaptureScreenshotOn": 0
+    },
     "MainActivity": {
       "ScreenChange": true,
-      "DisplayName": "HybridMainActivity",
-      "CaptureLayoutDelay": 2000
+      "DisplayName": "MainActivity",
+      "CaptureLayoutDelay": 1000
     }
   },
   "AppendMapIds": {
