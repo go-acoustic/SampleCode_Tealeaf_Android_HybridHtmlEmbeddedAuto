@@ -9,7 +9,6 @@ package tl.hybridhtmlembeddedauto;
 
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
-import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
@@ -46,14 +45,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 finish();
                 startActivity(getIntent());
-            }
-        });
-
-        findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
-                startActivity(intent);
             }
         });
     }
