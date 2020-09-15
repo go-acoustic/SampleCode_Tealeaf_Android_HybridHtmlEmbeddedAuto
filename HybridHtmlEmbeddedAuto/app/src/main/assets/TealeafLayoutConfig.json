@@ -9,9 +9,9 @@
     "IBMGlobalScreenSettings":{
       "ScreenChange": true,
       "DisplayName": "",
-      "CaptureLayoutDelay": 500,
+      "CaptureLayoutDelay": 2000,
       "ScreenShot": false,
-      "NumberOfWebViews": 0,
+      "NumberOfWebViews": 3,
       "CaptureUserEvents": true,
       "CaptureScreenVisits": true,
       "CaptureLayoutOn": 2,
