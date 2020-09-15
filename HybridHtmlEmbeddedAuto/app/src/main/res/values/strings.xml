@@ -11,4 +11,5 @@
     <string name="app_key" translatable="false">App Key:</string>
     <string name="post_message_url" translatable="false"> Post Message URL:</string>
     <string name="save_setting" translatable="false">Save Setting</string>
+    <string name="dialog" translatable="false">Dialog Webview</string>
 </resources>
