@@ -1,5 +1,5 @@
 {
-  "LibraryVersion": "3.0.5",
+  "LibraryVersion": "3.0.6",
   "DefaultAlertDialogLayoutDelay": 500,
   "ExtendsWebViewClient": false
 }
