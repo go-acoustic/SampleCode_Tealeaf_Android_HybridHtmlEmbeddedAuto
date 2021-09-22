@@ -28,9 +28,9 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'androidx.appcompat:appcompat:1.2.0'
 
-    implementation 'com.ea:eocore:2.0.83'
-    implementation 'com.ea:tealeaf:10.3.116'
-    implementation 'com.ea:teacuts:3.0.4'
+    implementation 'com.ea:eocore:2.0.84'
+    implementation 'com.ea:tealeaf:10.3.119'
+    implementation 'com.ea:teacuts:3.0.7'
 }
 
 // Required for auto instrumentation using Teacuts library

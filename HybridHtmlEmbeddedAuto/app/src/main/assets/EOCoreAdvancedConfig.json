@@ -1,6 +1,6 @@
 {
   "MaxNumberOfFilesToCache": 5,
-  "CachedFileMaxBytesSize": 1024000,
+  "CachedFileMaxBytesSize":   400000,
   "PostMessageMaxBytesSize": 2048000,
   "PostMessageTimeout": 3000,
   "PostMessageSocketTimeout": 3000,
