@@ -7,7 +7,6 @@
 * Acoustic, L.P. Any unauthorized copying or distribution of content from this file is
 * prohibited.
 ********************************************************************************************/
-
 package tl.hybridhtmlembeddedauto;
 
 import com.ibm.eo.util.LogInternal;

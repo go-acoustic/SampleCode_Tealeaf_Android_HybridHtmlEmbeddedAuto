@@ -44,6 +44,16 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        findViewById(R.id.button_dialog).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Diaglog contains a webview
+                WebDialog noticeDialog = new WebDialog(MainActivity.this);
+                noticeDialog.setUrl("file:///android_asset/mobile_domcap/embeddedGesturesMenu.html");
+                noticeDialog.show();
+            }
+        });
+
         findViewById(R.id.button1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

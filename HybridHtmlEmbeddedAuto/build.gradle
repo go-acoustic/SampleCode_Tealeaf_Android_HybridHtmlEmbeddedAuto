@@ -21,6 +21,9 @@ allprojects {
     repositories {
         jcenter()
         google()
+        maven {
+            url "https://raw.githubusercontent.com/acoustic-analytics/Android_Maven/master"
+        }
     }
 }
 
