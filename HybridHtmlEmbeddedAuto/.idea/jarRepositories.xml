@@ -31,5 +31,10 @@
       <option name="name" value="maven" />
       <option name="url" value="https://raw.githubusercontent.com/acoustic-analytics/Android_Maven/beta" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven" />
+      <option name="name" value="maven" />
+      <option name="url" value="https://raw.githubusercontent.com/acoustic-analytics/Android_Maven/master" />
+    </remote-repository>
   </component>
 </project>
