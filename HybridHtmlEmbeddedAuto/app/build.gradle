@@ -27,6 +27,6 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.2'
 
-    implementation 'com.ea:eocore:2.0.211'
-    implementation 'com.ea:tealeaf:10.3.194'
+    implementation 'com.ea:eocore:2.0.280'
+    implementation 'com.ea:tealeaf:10.3.269'
 }
