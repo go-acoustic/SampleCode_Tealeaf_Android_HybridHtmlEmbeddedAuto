@@ -1,15 +1,13 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'com.archinamon.aspectj'
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion '30.0.0'
+    compileSdkVersion 32
+    buildToolsVersion '32.0.0'
     defaultConfig {
         applicationId 'tl.hybridhtmlembeddedauto'
-        minSdkVersion 16
-        targetSdkVersion 30
+        minSdkVersion 21
+        targetSdkVersion 32
         versionCode 1
         versionName "1.0"
     }
@@ -26,16 +24,9 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.2'
 
-    implementation 'com.ea:eocore:2.0.84'
-    implementation 'com.ea:tealeaf:10.3.119'
-    implementation 'com.ea:teacuts:3.0.7'
-}
-
-// Required for auto instrumentation using Teacuts library
-aspectj {
-    includeAllJars true
-    includeJar 'teacuts'
-    includeAspectsFromJar 'teacuts'
+    implementation 'com.ea:eocore:2.0.288'
+    implementation 'com.ea:tealeaf:10.3.274'
 }

@@ -30,5 +30,7 @@
   "ColorAccent": "#FF4081",
   "EnableGestureSwipeLogScreen": true,
   "EnableScreenshotCache": false,
-  "FlushUpdatedPlaceHolders": false
+  "FlushUpdatedPlaceHolders": false,
+  "ExtendsGoogleWebViewClient": false,
+  "GoogleWebViewEnabled": true
 }
