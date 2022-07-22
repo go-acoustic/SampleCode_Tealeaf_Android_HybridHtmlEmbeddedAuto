@@ -21,7 +21,7 @@ allprojects {
         mavenCentral()
         google()
         maven {
-            url "https://raw.githubusercontent.com/acoustic-analytics/Android_Maven/beta"
+            url "https://raw.githubusercontent.com/acoustic-analytics/Android_Maven/master"
         }
     }
 }
