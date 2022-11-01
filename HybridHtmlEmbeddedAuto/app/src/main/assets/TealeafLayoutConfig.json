@@ -3,8 +3,8 @@
     "GlobalScreenSettings":{
       "ScreenChange": true,
       "DisplayName": "",
-      "CaptureLayoutDelay": 1500,
-      "ScreenShot": true,
+      "CaptureLayoutDelay": 2000,
+      "ScreenShot": false,
       "NumberOfWebViews": 3,
       "CaptureUserEvents": true,
       "CaptureScreenVisits": true,
