@@ -1,5 +1,5 @@
 /********************************************************************************************
-* Copyright (C) 2016 Acoustic, L.P. All rights reserved.
+* Copyright (C) 2022 Acoustic, L.P. All rights reserved.
 *
 * NOTICE: This file contains material that is confidential and proprietary to
 * Acoustic, L.P. and/or other developers. No license is granted under any intellectual or
@@ -18,6 +18,8 @@ import android.view.MotionEvent;
 import android.webkit.WebView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.tl.uic.Tealeaf;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -71,12 +73,13 @@ public class MainActivity extends AppCompatActivity {
         myWebView.loadUrl(url);
     }
 
-    /* Add touch event to collect gestures for Tealeaf.
+    /* Add touch event to collect gestures for Tealeaf for native controls.
      *
      * (non-Javadoc)
      * @see android.app.Activity#dispatchTouchEvent(android.view.MotionEvent)
      */
     public boolean dispatchTouchEvent(MotionEvent e) {
+//        Tealeaf.dispatchTouchEvent(this, e);
         return super.dispatchTouchEvent(e);
     }
 }
