@@ -1,5 +1,5 @@
 /********************************************************************************************
-* Copyright (C) 2016 Acoustic, L.P. All rights reserved.
+* Copyright (C) 2022 Acoustic, L.P. All rights reserved.
 *
 * NOTICE: This file contains material that is confidential and proprietary to
 * Acoustic, L.P. and/or other developers. No license is granted under any intellectual or
@@ -16,17 +16,8 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
       super.onCreate();
+
       new Tealeaf(this);
       Tealeaf.enable();
-    }
-    @Override
-    public void onLowMemory() {
-
-      super.onLowMemory();
-    }
-    @Override
-    public void onTerminate() {
-     
-      super.onTerminate();
     }
 }

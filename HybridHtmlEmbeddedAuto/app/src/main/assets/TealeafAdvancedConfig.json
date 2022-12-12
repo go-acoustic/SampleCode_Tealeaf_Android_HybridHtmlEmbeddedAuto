@@ -6,6 +6,7 @@
   "MessageTypeHeader": "WorklightHit",
   "KillSwitchAsync": true,
   "WebViewDelay": "1000",
+  "GoogleWebViewEnabled": true,
   "ExcludeTextViewStyleForOS": "",
   "DefaultTextViewGravity": "left",
   "DefaultTextViewPaddingLeft": 5,
@@ -23,6 +24,9 @@
   "GenerateImageHash": true,
   "SwitchWidth": 140,
   "EnableActivityLifeCycleListener": true,
+  "EditTextEnabled": true,
+  "ClickEventEnabled": false,
+  "TouchEventEnabled": false,
   "UseXpathId": false,
   "RemoveAllCookies": false,
   "ColorPrimary": "#3F51B5",
@@ -31,6 +35,5 @@
   "EnableGestureSwipeLogScreen": true,
   "EnableScreenshotCache": false,
   "FlushUpdatedPlaceHolders": false,
-  "ExtendsGoogleWebViewClient": false,
-  "GoogleWebViewEnabled": true
+  "ExtendsGoogleWebViewClient": false
 }
