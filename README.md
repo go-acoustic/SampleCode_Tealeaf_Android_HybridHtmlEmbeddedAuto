@@ -1,8 +1,8 @@
 # SampleCode_Tealeaf_HybridHtmlEmbeddedAuto
 HybridHtmlEmbeddedAuto with Tealeaf sdk.
 
-Built with Android Studio Chipmunk, Gradle version 7.2
-Support AndroidX, API level 21 to 32.
+Built with Android Studio Electric Eel, Gradle version 7.5.1
+Support AndroidX, API level 21 to 33.
 
 # Notes
 **DOM Diff** is now supported in **SaaS** only. This application has **DOM Diff** disabled. If you need to test for SaaS system. You will need to change from:
