@@ -29,7 +29,7 @@ dependencies {
     implementation "androidx.appcompat:appcompat:1.6.0"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
 
-    implementation "io.github.acoustic-analytics:eocore:2.0.299"
-    implementation "io.github.acoustic-analytics:tealeaf:10.3.312"
-
+    // Public MavenCentral repo
+    implementation "io.github.acoustic-analytics:eocore:+"
+    implementation "io.github.acoustic-analytics:tealeaf:+"
 }
