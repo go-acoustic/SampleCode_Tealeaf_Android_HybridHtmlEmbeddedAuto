@@ -1,32 +1,35 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
+apply plugin: "com.android.application"
+apply plugin: "kotlin-android"
 
 android {
-    compileSdkVersion 32
-    buildToolsVersion '32.0.0'
+    compileSdkVersion 33
+
     defaultConfig {
-        applicationId 'tl.hybridhtmlembeddedauto'
+        applicationId "tl.hybridhtmlembeddedauto"
         minSdkVersion 21
-        targetSdkVersion 32
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
     }
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
-    }}
+    }
+    namespace "tl.hybridhtmlembeddedauto"
+}
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+    implementation fileTree(include: ["*.jar"], dir: "libs")
+    implementation "androidx.appcompat:appcompat:1.6.0"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
 
-    implementation 'com.ea:eocore:2.0.295'
-    implementation 'com.ea:tealeaf:10.3.294'
+    // Public MavenCentral repo
+    implementation "io.github.acoustic-analytics:eocore:+"
+    implementation "io.github.acoustic-analytics:tealeaf:+"
 }
